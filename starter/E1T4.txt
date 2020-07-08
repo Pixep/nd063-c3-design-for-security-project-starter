@@ -1,0 +1,7 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+The application server should be in a private subnet, and accessible only from the load balancer. The application server can then be accessed via AWS Sessions Manager with a dedicated IAM role.
+
+# Poor practice 2
+S3 free recipes bucket should be reachable only from AWS, and from our Web application instance in particular, using a dedicated access point. At least our "secret recipe" bucket should have server-side encryption with with KMS, and recipes can also be client-side encrypted, if possible in this use case (intermediate API+lambda to read recipes?), to ensure these are kept secret. 
