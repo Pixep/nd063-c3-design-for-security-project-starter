@@ -1,3 +1,15 @@
-Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+## User related
+A number of the security and compliance warnings related to the use of the root user, which should be replaced with specific IAM users
 
-Bonus - provide recommendations on how to remediate the vulnerabilities.
+## EC2 related
+The current server is publicly accessible, and should be on a private network instead. The appropriate security groups should be setup to only allow access from the load balancer.
+The instance has SSH enabled and reachable publicly. This should be replaced by AWS System Manager, if needed, and not accessible publicly, or better, disabled altogether, and use only a pre-generated AWS image, with no external access
+
+## S3
+Ensure files are encrypted at rest with KMS, and that private recipes are encrypted on the client-side, "Privileged business users" can use an application instead of directly accessing S3
+
+## Network
+Modify security groups to be least access, place the app server in a private subnet (again), use NACL to block all ports / IP ranges not needed, and possibly monitor outbound traffic as well.
+
+## Monitoring
+Create multiple log metric filter and alarms to monitor changes on the key security components (S3 files access, NACL, network gateways, VPC, etc.)

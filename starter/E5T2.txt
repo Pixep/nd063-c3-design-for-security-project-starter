@@ -1,13 +1,20 @@
 # Identify tools that will allow you to do the following:
 
 ## Scan infrastructure as code templates
+Terrascan (https://github.com/accurics/terrascan) is a static code analyzer for Terraform that focuses on AWS.
 
 ### Example vulnerability
+- A publicly available RDS instance
+- Non encrypted EBS, or S3 bucket
 
 ##Scan AMI’s or containers for OS vulnerabilities
+Clair (https://github.com/quay/clair) is a static analysis tool that scans for vulnerabilities in containers
 
 ### Example vulnerability
+Will scan for CVEs in images, which could include warnings when using a vulnerable version of OpenSSL, or a version Nginx vulnerable to attacks for instance.
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
+CloudSploit can scan an AWS environment for vulnerabilities
 
 ### Example vulnerability
+Can verify that IAM users have secure authentication policies, that servers are not exposed publicly when not necessary, that storage is encrypted

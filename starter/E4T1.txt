@@ -1,5 +1,8 @@
-
-
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- Move the application instance to a private subnet, accessible only to the ALB
+- Disable SSH altogether on the instance
+- Use EC2 Image builder to automatically provide an image without SSH, and make the install as lean and closed as possible
 
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+The recipes on the secret bucket needs to be encrypted on the client side, to make the content unusable, even if the bucket itself was compromised.
+This will require another app to access encrypt/decrypt data from it.
